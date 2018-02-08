@@ -8,20 +8,39 @@ namespace Bowling
 {
     public class BowlingGame
     {
-        public BowlingGame()
+        private List<int> _rolls = new List<int>(21);
+        public void Roll(int pins)
         {
-            Score = 0; 
+            _rolls.Add(pins);
         }
-        public double Score { get; set; }
-
-            public void Roll(int pins)
+        public int Score
+        {
+            get
             {
-            Score += pins;
-            }
-
+                int score = 0;
+                int boxIndex = 0;
+                for (int box = 0; box < 10; box++)
+                {
+                    if (Spare(boxIndex))
+                    {
+                        score += 10 + _rolls[boxIndex + 2];
+                        boxIndex += 2;
+                    }
+                    else
+                    {
+                        score += _rolls[boxIndex] + _rolls [boxIndex +1];
+                        boxIndex += 2;
+                    }
+                }
+                return score;
+            }          
+        }
+        private bool Spare (int boxIndex)
+        {
+            return _rolls[boxIndex] + _rolls[boxIndex + 1] == 10;
+        }
         static void Main(string[] args)
         {
         }
-
     }
 }

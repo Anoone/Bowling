@@ -40,5 +40,15 @@ namespace BowlingTester
             RollAll(game, 20, 1);
             Assert.AreEqual(20, game.Score);
         }
+
+        [Test]
+        public void ThrowingOneSpare()
+        {
+            game.Roll(3);
+            game.Roll(7);
+            game.Roll(6);
+            RollAll(game, 20, 0);
+            Assert.AreEqual(22, game.Score);
+        }
     }
 }
