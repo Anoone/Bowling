@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Bowling
+namespace BowlingTester
 {
-    class Program
+    class BowlingTester
     {
         static void Main(string[] args)
         {

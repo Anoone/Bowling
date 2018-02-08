@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{531659BB-F879-40E7-8792-7B73E98F1CF1}</ProjectGuid>
+    <ProjectGuid>{83EA072A-D507-400E-845D-50D0DDAF704C}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>Bowling</RootNamespace>
-    <AssemblyName>Bowling</AssemblyName>
+    <RootNamespace>BowlingTester</RootNamespace>
+    <AssemblyName>BowlingTester</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -42,11 +42,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Bowling.cs" />
+    <Compile Include="BowlingTester.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Bowling\Bowling.csproj">
+      <Project>{531659bb-f879-40e7-8792-7b73e98f1cf1}</Project>
+      <Name>Bowling</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
