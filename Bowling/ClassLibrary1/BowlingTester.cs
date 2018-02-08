@@ -18,25 +18,26 @@ namespace BowlingTester
         {
             game = new BowlingGame();
         }
+
+        public void RollAll(BowlingGame game,int AmountOfThrows,int PinsHitOnThrow)
+        {
+            for (int i = 0; i < AmountOfThrows; i++)
+            {
+                game.Roll(PinsHitOnThrow);
+            }
+
+        }
         [Test]
         public void EveryThrowInTheGutterAndScoreZero()
         {
-            for (int i = 0; i < 20; i++)
-            {
-                game.Roll(0);
-            }
-
+            RollAll(game, 20, 0);
             Assert.AreEqual(0, game.Score);
         }
 
         [Test]
         public void GettinOnePinOnEveryThrow()
         {
-            for (int i = 0; i < 20; i++)
-            {
-                game.Roll(1);
-            }
-
+            RollAll(game, 20, 1);
             Assert.AreEqual(20, game.Score);
         }
     }
