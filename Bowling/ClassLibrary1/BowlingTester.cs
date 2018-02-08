@@ -11,12 +11,33 @@ namespace BowlingTester
     [TestFixture]
     public class BowlingTester
     {
-        [Test]
-        public void EveryThrowInTheGutter()
-        {
-            var game = new BowlingGame();
+        BowlingGame game;
 
-            for (int i = 0; i < 20; i++) ;
+        [SetUp]
+        public void TestSetUp()
+        {
+            game = new BowlingGame();
+        }
+        [Test]
+        public void EveryThrowInTheGutterAndScoreZero()
+        {
+            for (int i = 0; i < 20; i++)
+            {
+                game.Roll(0);
+            }
+
+            Assert.AreEqual(0, game.Score);
+        }
+
+        [Test]
+        public void GettinOnePinOnEveryThrow()
+        {
+            for (int i = 0; i < 20; i++)
+            {
+                game.Roll(1);
+            }
+
+            Assert.AreEqual(20, game.Score);
         }
     }
 }
