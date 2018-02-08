@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{531659BB-F879-40E7-8792-7B73E98F1CF1}</ProjectGuid>
+    <ProjectGuid>{2C015434-9326-4256-B028-DA54C6C985FB}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <RootNamespace>Bowling</RootNamespace>
     <AssemblyName>Bowling</AssemblyName>
@@ -42,7 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Bowling.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
