@@ -8,19 +8,19 @@ namespace Bowling
 {
     public class BowlingGame
     {
-        private List<int> _rolls = new List<int>(21);
-        private int _CurrentRoll = 0;
+        private List<int> _Throw = new List<int>(21);
+        private int _CurrentThrow = 0;
 
         public BowlingGame()
         {
             for (int i = 0; i < 22; i++)
             {
-                _rolls.Add(0);
+                _Throw.Add(0);
             }
         }
-        public void Roll(int pins)
+        public void Throw(int pins)
         {
-            _rolls[_CurrentRoll++] = pins;
+            _Throw[_CurrentThrow++] = pins;
         }
         public int Score
         {
@@ -32,17 +32,17 @@ namespace Bowling
                 {
                     if (Strike(boxIndex))
                     {
-                        score += 10 + _rolls[boxIndex + 1] + _rolls[boxIndex + 2];
+                        score += 10 + _Throw[boxIndex + 1] + _Throw[boxIndex + 2];
                         boxIndex ++;
                     }
                     else if (Spare(boxIndex))
                     {
-                        score += 10 + _rolls[boxIndex + 2];
+                        score += 10 + _Throw[boxIndex + 2];
                         boxIndex += 2;
                     }
                     else
                     {
-                        score += _rolls[boxIndex] + _rolls [boxIndex +1];
+                        score += _Throw[boxIndex] + _Throw [boxIndex +1];
                         boxIndex += 2;
                     }
                 }
@@ -51,14 +51,24 @@ namespace Bowling
         }
         private bool Strike(int boxIndex)
         {
-            return _rolls[boxIndex] == 10;
+            return _Throw[boxIndex] == 10;
         }
         private bool Spare (int boxIndex)
         {
-            return _rolls[boxIndex] + _rolls[boxIndex + 1] == 10;
+            return _Throw[boxIndex] + _Throw[boxIndex + 1] == 10;
         }
         static void Main(string[] args)
         {
+
+            Console.WriteLine("Bowling game");
+            Console.WriteLine("\nAdd your points\n");
+
+            BowlingGame game = new BowlingGame();
+
+            string Throw = Console.ReadLine();
+
+            Console.WriteLine("pisteita tahan mennessa"+ game.Score);
+
         }
     }
 }

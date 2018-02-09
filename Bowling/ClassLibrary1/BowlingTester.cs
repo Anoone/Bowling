@@ -19,72 +19,64 @@ namespace BowlingTester
             game = new BowlingGame();
         }
 
-        public void RollAll(BowlingGame game,int AmountOfThrows,int PinsHitOnThrow)
+        public void ThrowAll(BowlingGame game,int Throws,int PinsHit)
         {
-            for (int i = 0; i < AmountOfThrows; i++)
+            for (int i = 0; i < Throws; i++)
             {
-                game.Roll(PinsHitOnThrow);
+                game.Throw(PinsHit);
             }
 
         }
         [Test]
-        public void EveryThrowInTheGutterAndScoreZero()
+        public void ThrowBallAndHitOnePin()
         {
-            RollAll(game, 20, 0);
-            Assert.AreEqual(0, game.Score);
+            game.Throw(1);
+
+            Assert.AreEqual(1, game.Score);
         }
 
         [Test]
         public void GettinOnePinOnEveryThrow()
         {
-            RollAll(game, 20, 1);
+            ThrowAll(game, 20, 1);
             Assert.AreEqual(20, game.Score);
         }
 
         [Test]
         public void ThrowingOneSpare()
         {
-            game.Roll(3);
-            game.Roll(7);
-            game.Roll(6);
-            RollAll(game, 17, 0);
+            game.Throw(3);
+            game.Throw(7);
+            game.Throw(6);
+            ThrowAll(game, 17, 0);
             Assert.AreEqual(22, game.Score);
         }
 
         [Test]
         public void ThrowingOneStrike()
         {
-            game.Roll(10);
-            game.Roll(2);
-            game.Roll(2);
+            game.Throw(10);
+            game.Throw(2);
+            game.Throw(2);
 
-            RollAll(game, 17, 0);
+            ThrowAll(game, 17, 0);
             Assert.AreEqual(18, game.Score);
         }
 
-        [Test]
-        public void PerfectScoreInBowling()
-        {
-
-            RollAll(game, 12, 10);
-            Assert.AreEqual(300, game.Score);
-        }
 
         [Test]
         public void StrikeAndSpare()
         {
-            game.Roll(10);
-            game.Roll(5);
-            game.Roll(5);
-            game.Roll(3);
-            game.Roll(4);
+            game.Throw(10);
+            game.Throw(5);
+            game.Throw(5);
+            game.Throw(3);
+            game.Throw(4);
 
-            RollAll(game, 17, 0);
+            ThrowAll(game, 17, 0);
 
             Assert.AreEqual(40, game.Score);
         }
-
-
     }
 }
 
