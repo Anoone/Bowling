@@ -3,14 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
 namespace Bowling
 {
     public class BowlingGame
     {
         private List<int> _Throw = new List<int>(21);
         private int _CurrentThrow = 0;
-
         public BowlingGame()
         {
             for (int i = 0; i < 22; i++)
@@ -38,12 +36,12 @@ namespace Bowling
                     else if (Spare(boxIndex))
                     {
                         score += 10 + _Throw[boxIndex + 2];
-                        boxIndex += 2;
+                        boxIndex = boxIndex + 2;
                     }
                     else
                     {
                         score += _Throw[boxIndex] + _Throw [boxIndex +1];
-                        boxIndex += 2;
+                        boxIndex = boxIndex + 2;
                     }
                 }
                 return score;
@@ -59,7 +57,6 @@ namespace Bowling
         }
         static void Main(string[] args)
         {
-
             Console.WriteLine("Bowling game");
             Console.WriteLine("\nAdd your points\n");
 
@@ -68,7 +65,6 @@ namespace Bowling
             string Throw = Console.ReadLine();
 
             Console.WriteLine("pisteita tahan mennessa"+ game.Score);
-
         }
     }
 }

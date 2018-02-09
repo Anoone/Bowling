@@ -12,20 +12,17 @@ namespace BowlingTester
     public class BowlingTester
     {
         BowlingGame game;
-
         [SetUp]
         public void TestSetUp()
         {
             game = new BowlingGame();
         }
-
         public void ThrowAll(BowlingGame game,int Throws,int PinsHit)
         {
             for (int i = 0; i < Throws; i++)
             {
                 game.Throw(PinsHit);
             }
-
         }
         [Test]
         public void ThrowBallAndHitOnePin()
@@ -34,14 +31,12 @@ namespace BowlingTester
 
             Assert.AreEqual(1, game.Score);
         }
-
         [Test]
         public void GettinOnePinOnEveryThrow()
         {
             ThrowAll(game, 20, 1);
             Assert.AreEqual(20, game.Score);
         }
-
         [Test]
         public void ThrowingOneSpare()
         {
@@ -51,7 +46,6 @@ namespace BowlingTester
             ThrowAll(game, 17, 0);
             Assert.AreEqual(22, game.Score);
         }
-
         [Test]
         public void ThrowingOneStrike()
         {
@@ -62,8 +56,6 @@ namespace BowlingTester
             ThrowAll(game, 17, 0);
             Assert.AreEqual(18, game.Score);
         }
-
-
         [Test]
         public void StrikeAndSpare()
         {
