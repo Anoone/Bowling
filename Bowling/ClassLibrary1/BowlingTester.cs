@@ -69,6 +69,22 @@ namespace BowlingTester
             RollAll(game, 12, 10);
             Assert.AreEqual(300, game.Score);
         }
+
+        [Test]
+        public void StrikeAndSpare()
+        {
+            game.Roll(10);
+            game.Roll(5);
+            game.Roll(5);
+            game.Roll(3);
+            game.Roll(4);
+
+            RollAll(game, 17, 0);
+
+            Assert.AreEqual(40, game.Score);
+        }
+
+
     }
 }
 
