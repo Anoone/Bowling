@@ -9,9 +9,18 @@ namespace Bowling
     public class BowlingGame
     {
         private List<int> _rolls = new List<int>(21);
+        private int _CurrentRoll = 0;
+
+        public BowlingGame()
+        {
+            for (int i = 0; i < 22; i++)
+            {
+                _rolls.Add(0);
+            }
+        }
         public void Roll(int pins)
         {
-            _rolls.Add(pins);
+            _rolls[_CurrentRoll++] = pins;
         }
         public int Score
         {
@@ -21,7 +30,12 @@ namespace Bowling
                 int boxIndex = 0;
                 for (int box = 0; box < 10; box++)
                 {
-                    if (Spare(boxIndex))
+                    if (Strike(boxIndex))
+                    {
+                        score += 10 + _rolls[boxIndex + 1] + _rolls[boxIndex + 2];
+                        boxIndex ++;
+                    }
+                    else if (Spare(boxIndex))
                     {
                         score += 10 + _rolls[boxIndex + 2];
                         boxIndex += 2;
@@ -34,6 +48,10 @@ namespace Bowling
                 }
                 return score;
             }          
+        }
+        private bool Strike(int boxIndex)
+        {
+            return _rolls[boxIndex] == 10;
         }
         private bool Spare (int boxIndex)
         {

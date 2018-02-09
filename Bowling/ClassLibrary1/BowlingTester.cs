@@ -47,8 +47,28 @@ namespace BowlingTester
             game.Roll(3);
             game.Roll(7);
             game.Roll(6);
-            RollAll(game, 20, 0);
+            RollAll(game, 17, 0);
             Assert.AreEqual(22, game.Score);
+        }
+
+        [Test]
+        public void ThrowingOneStrike()
+        {
+            game.Roll(10);
+            game.Roll(2);
+            game.Roll(2);
+
+            RollAll(game, 17, 0);
+            Assert.AreEqual(18, game.Score);
+        }
+
+        [Test]
+        public void PerfectScoreInBowling()
+        {
+
+            RollAll(game, 12, 10);
+            Assert.AreEqual(300, game.Score);
         }
     }
 }
+
